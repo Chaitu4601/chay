@@ -26,6 +26,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+      - name: Check if subdir exists
+        if: ${{ !exists('subdir/go.sum') }}
+        run: echo "subdir directory or go.sum file not found, skipping dependency installation."
+
       - name: Install dependencies
+        if: ${{ exists('subdir/go.sum') }}
         run: go mod download
         working-directory: ./subdir
+
