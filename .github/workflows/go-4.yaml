@@ -13,7 +13,20 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.17'
-          cache-dependency-path: subdir/go.sum
+      - name: Cache Go Modules
+        uses: actions/cache@v3
+        with:
+          path: | 
+            C:\Users\runneradmin\go\pkg\mod
+            C:\Users\runneradmin\go\bin
+          key: ${{ runner.os }}-go-${{ hashFiles('subdir/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Install dependencies
+        run: go mod download
+        working-directory: subdir
+          
 
     
     
