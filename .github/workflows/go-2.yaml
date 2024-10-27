@@ -1,0 +1,17 @@
+name: using a specific Go version
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+steps:    
+   - name: Setup Go 1.21.x
+     uses: actions/setup-go@v5
+        with:
+          go-version: '1.21.x'
+        
