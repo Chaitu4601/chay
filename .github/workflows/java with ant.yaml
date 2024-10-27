@@ -1,4 +1,4 @@
-name: specifying version and architecture
+name: specifying the java version and architecture
 
 on:
   push:
