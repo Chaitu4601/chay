@@ -1,4 +1,4 @@
-name: building and testing GO
+name: Go
 
 on:
   push:
@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -19,9 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: go mod tidy
-
+        working-directory: ./go-5.yaml
+        
       - name: Build
         run: go build -v ./...
-
-      - name: Test with the Go CLI
+        working-directory: ./go-5.yaml
+        
+      - name: Run Tests
         run: go test -v ./...
+        working-directory: ./go-5.yaml
