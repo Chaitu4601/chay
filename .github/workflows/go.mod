@@ -20,12 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: go mod tidy
-        working-directory: ./go-5.yaml
+        working-directory: ./go.mod
         
       - name: Build
         run: go build -v ./...
-        working-directory: ./go-5.yaml
+        working-directory: ./go.mod
         
       - name: Run Tests
         run: go test -v ./...
-        working-directory: ./go-5.yaml
+        working-directory: ./go.mod
