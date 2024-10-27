@@ -21,9 +21,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ${{ env.GO_PATH }}/pkg/mod
-            ${{ env.GO_PATH }}/bin
-          key: ${{ runner.os }}-go-${{ hashFiles('subdir/go.sum') }}
+            C:\Users\runneradmin\go\pkg\mod
+            C:\Users\runneradmin\go\bin
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
 
