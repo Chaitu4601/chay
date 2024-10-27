@@ -9,6 +9,8 @@ jobs:
   build: 
     runs-on: windows-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v3
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
@@ -25,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: go mod download
-        working-directory: subdir
+        working-directory: ./subdir
           
 
     
