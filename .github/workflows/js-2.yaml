@@ -17,16 +17,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
+      - name: List directory contents
+        run: ls -R  
+        
       - name: Install dependencies
-        run: npm install
-        working-directory: js-2
+        run: npm install --prefix js-2
         
       - name: Build Project
-        run: npm run build --if-present
-        working-directory: js-2
-
+        run: npm run build --prefix js-2 --if-present
+    
       - name: Run tests
-        run: npm test
-        working-directory: js-2
-       
+        run: npm test --prefix js-2
