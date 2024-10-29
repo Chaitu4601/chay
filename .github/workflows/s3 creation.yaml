@@ -27,11 +27,10 @@ jobs:
 
       - name: Check AWS CLI version
         run: aws --version
-        
-      - name: Check AWS Credentials
+
+      - name: Test AWS Credentials
         run: |
-          echo "AWS_ACCESS_KEY_ID set? ${{ secrets.AWS_ACCESS_KEY_ID != '' }}"
-          echo "AWS_SECRET_ACCESS_KEY set? ${{ secrets.AWS_SECRET_ACCESS_KEY != '' }}"
+          aws sts get-caller-identity
 
       - name: Sync files to S3
         run: |
