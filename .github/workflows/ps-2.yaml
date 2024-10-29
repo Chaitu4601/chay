@@ -11,6 +11,9 @@ jobs:
       - name: Install Pester
         shell: pwsh
         run: Install-Module -Name Pester -Force -SkipPublisherCheck
+      - name: List files in the current directory
+        shell: pwsh
+        run: Get-ChildItem -Recurse
       - name: Check if Unit.Tests.ps1 exists
         shell: pwsh
         run: |
@@ -25,4 +28,4 @@ jobs:
         with:
           name: ubuntu-Unit-Tests
           path: Unit.Tests.xml
-    if: ${{ always() }}
+        if: ${{ always() }}
