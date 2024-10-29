@@ -5,11 +5,12 @@ on:
     branches:
         - main
 
-job:
-  name: Install and run PSScriptAnalyzer
+jobs:
+  Install_and_run_PSScriptAnalyzer:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Install PSScriptAnalyzer module
         shell: pwsh
         run: |
