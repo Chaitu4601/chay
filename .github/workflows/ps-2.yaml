@@ -8,18 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Pester
-        shell: pwsh
-        run: Install-Module -Name Pester -Force -SkipPublisherCheck
-      - name: List files in the current directory
-        shell: pwsh
-        run: Get-ChildItem -Recurse
-      - name: Check if Unit.Tests.ps1 exists
-        shell: pwsh
-        run: |
-          if (!(Test-Path -Path "Unit.Tests.ps1")) {
-            throw "Unit.Tests.ps1 not found."
-          }
       - name: Test with Pester
         shell: pwsh
         run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
@@ -28,4 +16,4 @@ jobs:
         with:
           name: ubuntu-Unit-Tests
           path: Unit.Tests.xml
-        if: ${{ always() }}
+    if: ${{ always() }}
